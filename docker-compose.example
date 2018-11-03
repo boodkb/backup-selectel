@@ -1,0 +1,25 @@
+---
+version: '2'
+services:
+  backup:
+    image: boodkb/backup-selectel
+    volumes:
+      - "/etc/localtime:/etc/localtime:ro"
+      - "/home/user/data:/data:ro"
+    environment:
+      SCHEDULE: "*/5 * * * *"
+
+      SELECTEL_USER: selectel_user
+      SELECTEL_PASSWORD: selectel_password
+      SELECTEL_DEST: container_name
+
+      ARCHIVE: "YES"
+
+      MAIL_SERVER: smtp.yandex.ru:465
+      MAIL_USER: "alert@yandex.ru"
+      MAIL_PASS: mail_password
+      MAIL_USE_TLS: "YES"
+      MAIL_FROM: "sender name"
+      MAIL_RECIPIENT: recipient@gmail.com
+      MAIL_SUCCESS: "YES"
+      # MAIL_DISABLED: "NO"
